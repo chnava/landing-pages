@@ -1,0 +1,28 @@
+# Git
+.git
+.gitignore
+
+# Docker
+Dockerfile
+.dockerignore
+docker-compose.yml
+
+# Operating System
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode
+.idea
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
+
+# Temporary
+tmp/
+temp/
+.cache/

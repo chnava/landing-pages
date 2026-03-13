@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  landing-page:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: christian-garcia-landing
+    ports:
+      - "80:80"
+    restart: always
+    networks:
+      - web
+
+networks:
+  web:
+    driver: bridge

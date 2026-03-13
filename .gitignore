@@ -84,3 +84,7 @@ coverage/
 # Misc
 *.pem
 *.key
+
+# Docker (optional - include if deploying to EasyPanel)
+# .dockerignore
+# docker-compose.yml
