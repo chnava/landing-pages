@@ -1,0 +1,86 @@
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+
+# Build Outputs
+dist/
+build/
+out/
+
+# Environment Variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Temporary Files
+tmp/
+temp/
+.cache/
+
+# Image Editing Files
+*.psd
+*.ai
+*.sketch
+*.xd
+
+# Backup Files
+*.bak
+*.backup
+*.old
+
+# OS Generated Files
+[Hh]ybrid.[Cc]fg
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Browser Files
+*.crx
+*.xpi
+
+# Database Files (if any local DB)
+*.db
+*.sqlite
+*.sqlite3
+
+# Testing Files
+coverage/
+.nyc_output/
+
+# Misc
+*.pem
+*.key

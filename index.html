@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Christian Alberto García Navarrete | Ingeniero en Gestión Empresarial</title>
+    <!-- Tailwind CSS CDN with plugins -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Font Awesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+    <!-- Google Fonts: Inter and Playfair Display for a corporate/elegant look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#152046',
+                        gold: '#AA8F76',
+                        softBlue: '#96A4D3',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style data-purpose="custom-layout">
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(170, 143, 118, 0.2);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #152046 0%, #1e2d5f 100%);
+        }
+        .timeline-dot::before {
+            content: '';
+            position: absolute;
+            left: -9px;
+            top: 5px;
+            width: 18px;
+            height: 18px;
+            background-color: #AA8F76;
+            border-radius: 50%;
+            border: 4px solid #fff;
+        }
+        @media (min-width: 768px) {
+            .timeline-dot::before {
+                left: -41px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-navy font-sans antialiased">
+    <!-- BEGIN: Navigation -->
+    <nav class="fixed w-full z-50 bg-navy/95 backdrop-blur-sm border-b border-gold/20 py-4 shadow-lg" data-purpose="main-navigation">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="text-white font-serif text-xl tracking-wider">
+                C.A.G.N<span class="text-gold">.</span>
+            </div>
+            <div class="hidden md:flex space-x-8 text-white/90 text-sm font-medium uppercase tracking-widest">
+                <a class="hover:text-gold transition-colors" href="#hero">Inicio</a>
+                <a class="hover:text-gold transition-colors" href="#about">Perfil</a>
+                <a class="hover:text-gold transition-colors" href="#experience">Experiencia</a>
+                <a class="hover:text-gold transition-colors" href="#skills">Habilidades</a>
+                <a class="hover:text-gold transition-colors" href="#education">Formación</a>
+                <a class="hover:text-gold transition-colors" href="#contact">Contacto</a>
+            </div>
+            <!-- Mobile Menu Toggle -->
+            <button class="md:hidden text-white" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-navy border-t border-gold/20">
+            <div class="flex flex-col px-6 py-4 space-y-3 text-white/90 text-sm font-medium uppercase tracking-widest">
+                <a class="hover:text-gold transition-colors" href="#hero">Inicio</a>
+                <a class="hover:text-gold transition-colors" href="#about">Perfil</a>
+                <a class="hover:text-gold transition-colors" href="#experience">Experiencia</a>
+                <a class="hover:text-gold transition-colors" href="#skills">Habilidades</a>
+                <a class="hover:text-gold transition-colors" href="#education">Formación</a>
+                <a class="hover:text-gold transition-colors" href="#contact">Contacto</a>
+            </div>
+        </div>
+    </nav>
+    <!-- END: Navigation -->
+
+    <!-- BEGIN: Hero Section -->
+    <section class="hero-gradient min-h-screen pt-20 pb-12 px-6 overflow-hidden relative flex items-center" data-purpose="hero-section" id="hero">
+        <div class="container mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
+            <div class="lg:w-1/2 text-center lg:text-left z-10">
+                <div class="inline-block px-4 py-2 bg-gold/10 backdrop-blur-sm rounded-full border border-gold/30 mb-5">
+                    <h2 class="text-gold font-medium tracking-[0.25em] uppercase text-sm">Ingeniero en Gestión Empresarial</h2>
+                </div>
+                <h1 class="text-white font-serif text-3xl md:text-4xl lg:text-5xl mb-4 leading-tight uppercase" style="letter-spacing: -0.5px;">
+                    Christian Alberto<br/><span class="text-gold text-2xl md:text-3xl lg:text-4xl">García Navarrete</span>
+                </h1>
+                
+                <!-- Credenciales -->
+                <div class="flex flex-wrap justify-center lg:justify-start gap-2 mb-5">
+                    <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 py-2 rounded-lg border border-white/20">
+                        <i class="fas fa-graduation-cap text-gold"></i>
+                        <span class="text-softBlue text-xs md:text-sm">Cédula: 11690553</span>
+                    </div>
+                    <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 py-2 rounded-lg border border-white/20">
+                        <i class="fas fa-university text-gold"></i>
+                        <span class="text-softBlue text-xs md:text-sm">ITIZ 2019</span>
+                    </div>
+                    <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 py-2 rounded-lg border border-white/20">
+                        <i class="fas fa-briefcase text-gold"></i>
+                        <span class="text-softBlue text-xs md:text-sm">+6 Años Exp.</span>
+                    </div>
+                </div>
+
+                <p class="text-softBlue text-sm md:text-base lg:text-lg mb-6 max-w-xl leading-relaxed">
+                    Especialista en <strong>Capital Humano</strong> y <strong>Tecnologías Administrativas</strong>. Transformo datos complejos en <strong>estrategias de alto impacto</strong> que optimizan procesos y fortalecen la toma de decisiones en entornos institucionales.
+                </p>
+                <div class="flex flex-wrap justify-center lg:justify-start gap-3">
+                    <a class="px-6 py-3 md:px-8 md:py-4 bg-gold hover:bg-[#967d65] text-white font-bold rounded-sm transition-all shadow-xl text-sm md:text-base" href="#contact">Contactar</a>
+                    <a class="px-6 py-3 md:px-8 md:py-4 border border-softBlue text-softBlue hover:bg-softBlue hover:text-navy font-bold rounded-sm transition-all text-sm md:text-base" href="#experience">Trayectoria</a>
+                </div>
+            </div>
+            <div class="lg:w-1/2 relative">
+                <div class="w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full border-4 border-gold/40 p-2 mx-auto shadow-2xl">
+                    <div class="w-full h-full rounded-full overflow-hidden bg-navy shadow-2xl relative">
+                        <img alt="Christian Alberto García Navarrete" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" src="Foto_CAGN.png"/>
+                    </div>
+                </div>
+                <!-- Decorative Elements -->
+                <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-gold/10 rounded-full blur-2xl"></div>
+                <div class="absolute -top-4 -left-4 w-32 h-32 bg-softBlue/10 rounded-full blur-3xl"></div>
+            </div>
+        </div>
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#about" class="text-white/60 hover:text-gold transition-colors">
+                <i class="fas fa-chevron-down text-3xl"></i>
+            </a>
+        </div>
+    </section>
+    <!-- END: Hero Section -->
+
+    <!-- BEGIN: About Me -->
+    <section class="py-24 px-6 bg-white" data-purpose="about-section" id="about">
+        <div class="container mx-auto">
+            <div class="max-w-4xl mx-auto text-center">
+                <span class="text-gold font-bold tracking-widest uppercase text-sm">Perfil Profesional</span>
+                <h2 class="text-4xl font-serif mt-2 mb-8">Estrategia y Excelencia Operativa</h2>
+                <p class="text-gray-600 text-lg leading-relaxed mb-12">
+                    Como <strong>Ingeniero en Gestión Empresarial</strong> especializado en <strong>Gestión de Capital Humano</strong>, cuento con una sólida formación en tecnologías administrativas, análisis de datos y gestión de personal. Mi experiencia en la <strong>administración pública federal</strong> abarca una amplia gama de competencias analíticas y organizativas que me permiten abordar desafíos complejos con una perspectiva estratégica y meticulosa. Me distingo por mi capacidad para <strong>integrar soluciones tecnológicas</strong> y herramientas de análisis de datos que reducen la incertidumbre y fortalecen la toma de decisiones, permitiendo definir estrategias más precisas, oportunas y alineadas a los objetivos institucionales.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="p-8 border border-slate-100 rounded-lg shadow-sm hover:shadow-md transition-shadow" data-purpose="value-card">
+                        <i class="fa-solid fa-users-gear text-3xl text-gold mb-4"></i>
+                        <h3 class="font-bold text-navy mb-2">Capital Humano</h3>
+                        <p class="text-sm text-gray-500">Gestión estratégica y desarrollo organizacional.</p>
+                    </div>
+                    <div class="p-8 border border-slate-100 rounded-lg shadow-sm hover:shadow-md transition-shadow" data-purpose="value-card">
+                        <i class="fa-solid fa-chart-line text-3xl text-gold mb-4"></i>
+                        <h3 class="font-bold text-navy mb-2">Data Analysis</h3>
+                        <p class="text-sm text-gray-500">Inteligencia de negocios aplicada a procesos administrativos.</p>
+                    </div>
+                    <div class="p-8 border border-slate-100 rounded-lg shadow-sm hover:shadow-md transition-shadow" data-purpose="value-card">
+                        <i class="fa-solid fa-database text-3xl text-gold mb-4"></i>
+                        <h3 class="font-bold text-navy mb-2">Optimización</h3>
+                        <p class="text-sm text-gray-500">Automatización de bases de datos y mejora continua.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END: About Me -->
+
+    <!-- BEGIN: Skills Section -->
+    <section class="py-24 px-6 bg-slate-50" data-purpose="skills-grid" id="skills">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-gold font-bold tracking-widest uppercase text-sm">Competencias</span>
+                <h2 class="text-4xl font-serif mt-2">Habilidades Técnicas</h2>
+                <div class="w-24 h-1 bg-gold mx-auto mt-4"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Ofimática -->
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-100" data-purpose="skill-card">
+                    <div class="flex items-center gap-3 mb-6">
+                        <i class="fas fa-file-word text-3xl text-gold"></i>
+                        <h3 class="font-bold text-navy text-xl">Ofimática</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm text-gray-600">Microsoft Word</span>
+                                <span class="text-sm text-gold font-bold">90%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
+                                <div class="bg-gold h-full rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm text-gray-600">Microsoft Excel</span>
+                                <span class="text-sm text-gold font-bold">80%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
+                                <div class="bg-gold h-full rounded-full" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm text-gray-600">MS Access</span>
+                                <span class="text-sm text-gold font-bold">60%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
+                                <div class="bg-gold h-full rounded-full" style="width: 60%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm text-gray-600">PowerPoint</span>
+                                <span class="text-sm text-gold font-bold">50%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
+                                <div class="bg-gold h-full rounded-full" style="width: 50%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm text-gray-600">Power BI</span>
+                                <span class="text-sm text-gold font-bold">Básico</span>
+                            </div>
+                            <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
+                                <div class="bg-gold h-full rounded-full" style="width: 30%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Aptitudes -->
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-100" data-purpose="skill-card">
+                    <div class="flex items-center gap-3 mb-6">
+                        <i class="fas fa-brain text-3xl text-gold"></i>
+                        <h3 class="font-bold text-navy text-xl">Aptitudes</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-2 bg-navy/5 text-navy text-sm rounded-full border border-navy/10">Autodidacta</span>
+                        <span class="px-3 py-2 bg-navy/5 text-navy text-sm rounded-full border border-navy/10">Capacidad Analítica</span>
+                        <span class="px-3 py-2 bg-navy/5 text-navy text-sm rounded-full border border-navy/10">Organización</span>
+                        <span class="px-3 py-2 bg-navy/5 text-navy text-sm rounded-full border border-navy/10">Planificación</span>
+                        <span class="px-3 py-2 bg-navy/5 text-navy text-sm rounded-full border border-navy/10">Pensamiento Crítico</span>
+                        <span class="px-3 py-2 bg-navy/5 text-navy text-sm rounded-full border border-navy/10">Comunicación Efectiva</span>
+                        <span class="px-3 py-2 bg-navy/5 text-navy text-sm rounded-full border border-navy/10">Trabajo en Equipo</span>
+                        <span class="px-3 py-2 bg-navy/5 text-navy text-sm rounded-full border border-navy/10">Adaptabilidad</span>
+                    </div>
+                </div>
+
+                <!-- Diseño Digital -->
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-100" data-purpose="skill-card">
+                    <div class="flex items-center gap-3 mb-6">
+                        <i class="fas fa-palette text-3xl text-gold"></i>
+                        <h3 class="font-bold text-navy text-xl">Diseño Digital</h3>
+                    </div>
+                    <ul class="space-y-3">
+                        <li class="flex justify-between items-center">
+                            <span class="text-sm text-gray-600">Edición de Imágenes</span>
+                            <span class="text-sm text-gold font-bold">Básico</span>
+                        </li>
+                        <li class="flex justify-between items-center">
+                            <span class="text-sm text-gray-600">Edición de Video</span>
+                            <span class="text-sm text-gold font-bold">Básico</span>
+                        </li>
+                        <li class="flex justify-between items-center">
+                            <span class="text-sm text-gray-600">Uso de IA</span>
+                            <span class="text-sm text-gold font-bold">Básico</span>
+                        </li>
+                        <li class="flex justify-between items-center">
+                            <span class="text-sm text-gray-600">Creación de páginas WEB con IA</span>
+                            <span class="text-sm text-gold font-bold">Básico</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Soporte Técnico -->
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-100" data-purpose="skill-card">
+                    <div class="flex items-center gap-3 mb-6">
+                        <i class="fas fa-tools text-3xl text-gold"></i>
+                        <h3 class="font-bold text-navy text-xl">Soporte Técnico</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-2 bg-navy/5 text-navy text-sm rounded-full border border-navy/10">Formateo</span>
+                        <span class="px-3 py-2 bg-navy/5 text-navy text-sm rounded-full border border-navy/10">Actualización</span>
+                        <span class="px-3 py-2 bg-navy/5 text-navy text-sm rounded-full border border-navy/10">Instalación</span>
+                    </div>
+                </div>
+
+                <!-- Idiomas -->
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-100" data-purpose="skill-card">
+                    <div class="flex items-center gap-3 mb-6">
+                        <i class="fas fa-language text-3xl text-gold"></i>
+                        <h3 class="font-bold text-navy text-xl">Idiomas</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm text-gray-600">Español</span>
+                                <span class="text-sm text-gold font-bold">Nativo</span>
+                            </div>
+                            <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
+                                <div class="bg-gold h-full rounded-full" style="width: 100%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm text-gray-600">Inglés</span>
+                                <span class="text-sm text-gold font-bold">Básico</span>
+                            </div>
+                            <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
+                                <div class="bg-gold h-full rounded-full" style="width: 10%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cursos -->
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-100" data-purpose="skill-card">
+                    <div class="flex items-center gap-3 mb-6">
+                        <i class="fas fa-certificate text-3xl text-gold"></i>
+                        <h3 class="font-bold text-navy text-xl">Cursos</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-2 bg-navy/5 text-navy text-sm rounded-full border border-navy/10">NOM-035-STPS</span>
+                        <span class="px-3 py-2 bg-navy/5 text-navy text-sm rounded-full border border-navy/10">Igualdad Laboral y No Discriminación</span>
+                        <span class="px-3 py-2 bg-navy/5 text-navy text-sm rounded-full border border-navy/10">Office 365</span>
+                        <span class="px-3 py-2 bg-navy/5 text-navy text-sm rounded-full border border-navy/10">Office 2024</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END: Skills Section -->
+
+    <!-- BEGIN: Experience Section -->
+    <section class="py-24 px-6 bg-white" data-purpose="experience-timeline" id="experience">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-gold font-bold tracking-widest uppercase text-sm">Trayectoria</span>
+                <h2 class="text-4xl font-serif mt-2">Experiencia Laboral</h2>
+                <div class="w-24 h-1 bg-gold mx-auto mt-4"></div>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="relative border-l-2 border-gold/30 pl-8 ml-4 md:ml-auto">
+                    <!-- CNDH 2025 -->
+                    <div class="relative mb-12 timeline-dot" data-purpose="experience-item">
+                        <span class="inline-block px-3 py-1 bg-gold/10 text-gold font-bold text-xs rounded-full mb-3">Marzo 2025 – Junio 2025</span>
+                        <h3 class="text-xl font-bold text-navy">Gestión de Personal (Formatos Únicos de Personal)</h3>
+                        <p class="text-softBlue font-medium mb-4">Comisión Nacional de los Derechos Humanos (CNDH)</p>
+                        <div class="glass-card p-6 rounded-lg shadow-sm border-l-4 border-gold">
+                            <p class="text-sm text-gray-500 mb-4">Coordinación General de Administración y Finanzas - Dirección General de Recursos Humanos</p>
+                            <ul class="list-disc list-outside ml-4 text-gray-600 space-y-2 text-sm">
+                                <li>Gestión de Formatos Únicos de Personal (FUP) para altas, bajas, prórrogas, promociones y cambios de adscripción</li>
+                                <li>Desarrollo de sistema profesional en MS Access para control de personal y creación de formatos FUP</li>
+                                <li>Elaboración de Atentas Notas a Unidades Administrativas para recabar firmas de Titulares y personal</li>
+                                <li>Apoyo en elaboración de Credenciales Institucionales para acceso e identificación</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- FGR - Recursos Materiales 2022-2023 -->
+                    <div class="relative mb-12 timeline-dot" data-purpose="experience-item">
+                        <span class="inline-block px-3 py-1 bg-gold/10 text-gold font-bold text-xs rounded-full mb-3">Junio 2022 – Julio 2023</span>
+                        <h3 class="text-xl font-bold text-navy">Jefe de Departamento de Recursos Materiales y Servicios Generales</h3>
+                        <p class="text-softBlue font-medium mb-4">Fiscalía General de la República (FGR) - Agencia de Investigación Criminal</p>
+                        <div class="glass-card p-6 rounded-lg shadow-sm border-l-4 border-gold">
+                            <p class="text-sm text-gray-500 mb-4">Policía Federal Ministerial</p>
+                            <ul class="list-disc list-outside ml-4 text-gray-600 space-y-2 text-sm">
+                                <li>Diseño y gestión de bases de datos en Excel para control de inventarios y consumibles</li>
+                                <li>Elaboración y monitoreo de solicitudes a Dirección de Recursos Materiales</li>
+                                <li>Desarrollo de formato en MS Access para gestión de resguardos de bienes inmuebles</li>
+                                <li>Gestión de cheques del fondo revolvente y reembolsos con correspondencia Excel-Word</li>
+                                <li>Emisión de Constancias de Existencia (CE) para verificación de artículos</li>
+                                <li>Asistencia administrativa en redacción de oficios y tareas operativas</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- FGR - Recursos Humanos 2019-2021 -->
+                    <div class="relative mb-12 timeline-dot" data-purpose="experience-item">
+                        <span class="inline-block px-3 py-1 bg-gold/10 text-gold font-bold text-xs rounded-full mb-3">Febrero 2019 – Marzo 2021</span>
+                        <h3 class="text-xl font-bold text-navy">Jefe de Departamento de Recursos Humanos</h3>
+                        <p class="text-softBlue font-medium mb-4">Fiscalía General de la República (FGR) - FISEL antes FEPADE</p>
+                        <div class="glass-card p-6 rounded-lg shadow-sm border-l-4 border-gold">
+                            <p class="text-sm text-gray-500 mb-4">Fiscalía Especializada para la Atención de Delitos Electorales</p>
+                            <ul class="list-disc list-outside ml-4 text-gray-600 space-y-2 text-sm">
+                                <li>Redacción de documentos administrativos: oficios, memorándums, minutas, difusión de cursos</li>
+                                <li>Desarrollo de formatos de Visto Bueno para plazas de nuevo ingreso y promociones</li>
+                                <li>Gestión de disponibilidad de plazas para formalización de contratos</li>
+                                <li>Integración y organización de documentación física y digital de personal</li>
+                                <li>Operación del Sistema de Información de RRHH (SIRH) para actualización de datos</li>
+                                <li>Supervisión y resguardo de expedientes del personal activo</li>
+                                <li>Aplicación y difusión de la Norma 035-STPS para ambiente laboral saludable</li>
+                                <li>Coordinación de campañas de vacunación contra influenza</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- FGR - Recursos Materiales 2018-2019 -->
+                    <div class="relative mb-12 timeline-dot" data-purpose="experience-item">
+                        <span class="inline-block px-3 py-1 bg-gold/10 text-gold font-bold text-xs rounded-full mb-3">Julio 2018 – Enero 2019</span>
+                        <h3 class="text-xl font-bold text-navy">Jefe de Departamento de Recursos Materiales y Servicios Generales</h3>
+                        <p class="text-softBlue font-medium mb-4">Fiscalía General de la República (FGR) - FISEL antes FEPADE</p>
+                        <div class="glass-card p-6 rounded-lg shadow-sm border-l-4 border-gold">
+                            <p class="text-sm text-gray-500 mb-4">Fiscalía Especializada para la Atención de Delitos Electorales</p>
+                            <ul class="list-disc list-outside ml-4 text-gray-600 space-y-2 text-sm">
+                                <li>Actualización de inventario de recursos materiales en Excel</li>
+                                <li>Supervisión de almacenamiento y distribución de recursos materiales</li>
+                                <li>Registro y control de solicitudes conforme a Programas de Austeridad</li>
+                                <li>Elaboración de informes de requerimiento para solicitud de nuevos recursos</li>
+                                <li>Gestión de resguardos de vehículos locales y foráneos</li>
+                                <li>Reportes semanales y mensuales de comisiones y estado de vehículos</li>
+                                <li>Coordinación del servicio de mensajería para documentación oficial</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- FGR - Planeación 2018 -->
+                    <div class="relative timeline-dot" data-purpose="experience-item">
+                        <span class="inline-block px-3 py-1 bg-gold/10 text-gold font-bold text-xs rounded-full mb-3">Febrero 2018 – Junio 2018</span>
+                        <h3 class="text-xl font-bold text-navy">Enlace en Área de Planeación y Control de Adquisiciones</h3>
+                        <p class="text-softBlue font-medium mb-4">Fiscalía General de la República (FGR) - FISEL antes FEPADE</p>
+                        <div class="glass-card p-6 rounded-lg shadow-sm border-l-4 border-gold">
+                            <p class="text-sm text-gray-500 mb-4">Fiscalía Especializada para la Atención de Delitos Electorales</p>
+                            <ul class="list-disc list-outside ml-4 text-gray-600 space-y-2 text-sm">
+                                <li>Elaboración y seguimiento de Anexos Técnicos con DIAM y DGPP</li>
+                                <li>Gestión del Formato FOSP para operación y seguimiento de proyectos</li>
+                                <li>Integración del Programa de Trabajo de Control Interno (PTCI)</li>
+                                <li>Coordinación con proveedores para entrega de bienes y servicios</li>
+                                <li>Colaboración con Recursos Materiales para instalación de equipos en eventos</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END: Experience Section -->
+
+    <!-- BEGIN: Education Section -->
+    <section class="py-24 px-6 bg-navy text-white" data-purpose="education-section" id="education">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-gold font-bold tracking-widest uppercase text-sm">Formación</span>
+                <h2 class="text-4xl font-serif mt-2">Educación Académica</h2>
+                <div class="w-24 h-1 bg-gold mx-auto mt-4"></div>
+            </div>
+
+            <div class="max-w-3xl mx-auto">
+                <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 md:p-12 text-center">
+                    <i class="fas fa-graduation-cap text-5xl text-gold mb-6"></i>
+                    <h3 class="text-2xl md:text-3xl font-serif font-bold mb-4">Licenciatura en Ingeniería en Gestión Empresarial</h3>
+                    <p class="text-softBlue text-lg mb-8">Instituto Tecnológico de Iztapalapa</p>
+                    <div class="flex flex-wrap justify-center gap-6">
+                        <div class="flex items-center gap-3 bg-white/10 px-6 py-3 rounded-lg">
+                            <i class="fas fa-calendar-check text-gold"></i>
+                            <div class="text-left">
+                                <p class="text-xs text-white/60 uppercase">Titulación</p>
+                                <p class="font-semibold">25 Jun 2019</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3 bg-white/10 px-6 py-3 rounded-lg">
+                            <i class="fas fa-id-card text-gold"></i>
+                            <div class="text-left">
+                                <p class="text-xs text-white/60 uppercase">Cédula Profesional</p>
+                                <p class="font-semibold">11690553</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3 bg-white/10 px-6 py-3 rounded-lg">
+                            <i class="fas fa-certificate text-gold"></i>
+                            <div class="text-left">
+                                <p class="text-xs text-white/60 uppercase">Expedición</p>
+                                <p class="font-semibold">29 Ago 2019</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END: Education Section -->
+
+    <!-- BEGIN: Values Section -->
+    <section class="py-24 px-6 bg-white" data-purpose="values-section" id="values">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-gold font-bold tracking-widest uppercase text-sm">Principios</span>
+                <h2 class="text-4xl font-serif mt-2">Valores Profesionales</h2>
+                <div class="w-24 h-1 bg-gold mx-auto mt-4"></div>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 max-w-5xl mx-auto">
+                <div class="bg-slate-50 p-6 rounded-xl text-center hover:shadow-lg transition-all hover:-translate-y-1 border border-slate-100">
+                    <i class="fas fa-heart text-3xl text-gold mb-3"></i>
+                    <h3 class="font-bold text-navy">Abnegación</h3>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-xl text-center hover:shadow-lg transition-all hover:-translate-y-1 border border-slate-100">
+                    <i class="fas fa-shield-alt text-3xl text-gold mb-3"></i>
+                    <h3 class="font-bold text-navy">Lealtad</h3>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-xl text-center hover:shadow-lg transition-all hover:-translate-y-1 border border-slate-100">
+                    <i class="fas fa-hand-holding-usd text-3xl text-gold mb-3"></i>
+                    <h3 class="font-bold text-navy">Honradez</h3>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-xl text-center hover:shadow-lg transition-all hover:-translate-y-1 border border-slate-100">
+                    <i class="fas fa-balance-scale text-3xl text-gold mb-3"></i>
+                    <h3 class="font-bold text-navy">Integridad</h3>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-xl text-center hover:shadow-lg transition-all hover:-translate-y-1 border border-slate-100">
+                    <i class="fas fa-hands-helping text-3xl text-gold mb-3"></i>
+                    <h3 class="font-bold text-navy">Empatía</h3>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-xl text-center hover:shadow-lg transition-all hover:-translate-y-1 border border-slate-100">
+                    <i class="fas fa-lightbulb text-3xl text-gold mb-3"></i>
+                    <h3 class="font-bold text-navy">Innovación</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END: Values Section -->
+
+    <!-- BEGIN: Contact Section -->
+    <section class="py-24 px-6 bg-slate-50" data-purpose="contact-section" id="contact">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-16">
+                <span class="text-gold font-bold tracking-widest uppercase text-sm">Contacto</span>
+                <h2 class="text-4xl font-serif mt-2">¿Listo para Colaborar?</h2>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Estoy disponible para nuevos desafíos profesionales. Contáctame para explorar oportunidades de colaboración.</p>
+                <div class="w-24 h-1 bg-gold mx-auto mt-4"></div>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-16">
+                <!-- Contact Info -->
+                <div class="lg:w-1/3">
+                    <div class="space-y-6">
+                        <!-- WhatsApp -->
+                        <a href="https://wa.me/5215613708967?text=Hola,%20ponte%20en%20contacto%20conmigo.%20Saludos" target="_blank" class="flex items-start space-x-4 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-all border border-slate-100 group">
+                            <div class="w-14 h-14 bg-navy flex items-center justify-center rounded-lg shadow-lg group-hover:bg-gold transition-colors">
+                                <i class="fab fa-whatsapp text-2xl text-gold group-hover:text-white transition-colors"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-400 uppercase tracking-widest font-bold mb-1">WhatsApp</p>
+                                <p class="text-navy font-semibold">+52 56 1370 8967</p>
+                                <p class="text-xs text-gray-500 mt-1">Enviar mensaje directo</p>
+                            </div>
+                        </a>
+
+                        <!-- Email -->
+                        <a href="mailto:chnava0109@outlook.com" class="flex items-start space-x-4 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-all border border-slate-100 group">
+                            <div class="w-14 h-14 bg-navy flex items-center justify-center rounded-lg shadow-lg group-hover:bg-gold transition-colors">
+                                <i class="fas fa-envelope text-2xl text-gold group-hover:text-white transition-colors"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-400 uppercase tracking-widest font-bold mb-1">Email</p>
+                                <p class="text-navy font-semibold">chnava0109@outlook.com</p>
+                                <p class="text-xs text-gray-500 mt-1">Enviar correo electrónico</p>
+                            </div>
+                        </a>
+
+                        <!-- Location -->
+                        <a href="https://www.google.com/maps/search/?api=1&query=09578" target="_blank" class="flex items-start space-x-4 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-all border border-slate-100 group">
+                            <div class="w-14 h-14 bg-navy flex items-center justify-center rounded-lg shadow-lg group-hover:bg-gold transition-colors">
+                                <i class="fas fa-location-dot text-2xl text-gold group-hover:text-white transition-colors"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-400 uppercase tracking-widest font-bold mb-1">Ubicación</p>
+                                <p class="text-navy font-semibold">Alcaldía Iztapalapa, C.P. 09578</p>
+                                <p class="text-xs text-gray-500 mt-1">Ver en Google Maps</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Additional Info -->
+                    <div class="mt-8 p-6 bg-navy rounded-xl text-white">
+                        <h3 class="font-serif text-xl mb-4">Disponibilidad</h3>
+                        <p class="text-softBlue text-sm leading-relaxed">
+                            Busco oportunidades que me permitan enfrentar desafíos innovadores, aportando valor mediante un desempeño responsable, leal y ético.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="lg:w-2/3">
+                    <form id="contactForm" class="p-8 md:p-10 bg-white rounded-2xl shadow-lg border border-slate-200" onsubmit="sendToWhatsApp(event)">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-navy/60 mb-2">Nombre Completo</label>
+                                <input id="nombre" class="w-full border border-slate-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-gold focus:border-gold transition-all" name="nombre" placeholder="Tu nombre" required="" type="text"/>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-navy/60 mb-2">Teléfono de Contacto</label>
+                                <input id="telefono" class="w-full border border-slate-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-gold focus:border-gold transition-all" name="telefono" placeholder="Tu teléfono" required="" type="tel"/>
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="block text-xs font-bold uppercase text-navy/60 mb-2">Correo Electrónico</label>
+                                <input id="email" class="w-full border border-slate-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-gold focus:border-gold transition-all" name="email" placeholder="email@dominio.com" required="" type="email"/>
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="block text-xs font-bold uppercase text-navy/60 mb-2">Asunto</label>
+                                <input id="asunto" class="w-full border border-slate-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-gold focus:border-gold transition-all" name="asunto" placeholder="Propuesta de proyecto" required="" type="text"/>
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="block text-xs font-bold uppercase text-navy/60 mb-2">Mensaje</label>
+                                <textarea id="mensaje" class="w-full border border-slate-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-gold focus:border-gold transition-all" name="mensaje" placeholder="¿Cómo puedo ayudarte?" required="" rows="5"></textarea>
+                            </div>
+                            <div class="md:col-span-2">
+                                <button class="w-full bg-green-600 text-white font-bold py-4 rounded-lg hover:bg-green-700 transition-all uppercase tracking-widest text-sm shadow-xl flex items-center justify-center gap-3" type="submit">
+                                    <i class="fab fa-whatsapp"></i> Enviar por WhatsApp
+                                </button>
+                            </div>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-4 text-center">
+                            <i class="fas fa-info-circle mr-1"></i> Todos los campos son obligatorios
+                        </p>
+                    </form>
+                    <p class="text-xs text-gray-500 mt-4 text-center">
+                        <i class="fas fa-lock mr-1"></i> Tus datos están protegidos. El formulario envía directamente a tu WhatsApp.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END: Contact Section -->
+
+    <!-- BEGIN: Footer -->
+    <footer class="bg-navy py-12 border-t border-white/5" data-purpose="footer">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col items-center">
+                <div class="text-gold font-serif text-3xl mb-4">C.A.G.N<span class="text-white">.</span></div>
+                <p class="text-softBlue/60 text-sm max-w-md mx-auto mb-8 italic text-center">
+                    "Compromiso con la excelencia, la integridad y el desarrollo estratégico empresarial."
+                </p>
+                <div class="flex justify-center space-x-6 mb-8">
+                    <a class="w-12 h-12 bg-white/5 flex items-center justify-center rounded-full hover:bg-gold transition-all group" href="https://www.linkedin.com/in/christian-a-garcía-navarrete-b87b19181?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank">
+                        <i class="fab fa-linkedin text-2xl text-gold group-hover:text-white transition-colors"></i>
+                    </a>
+                </div>
+                <div class="border-t border-white/10 pt-8 text-center">
+                    <p class="text-white/40 text-xs uppercase tracking-widest">
+                        © 2025 Christian Alberto García Navarrete | Cédula Profesional 11690553 | Todos los derechos reservados.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- END: Footer -->
+
+    <!-- Scripts -->
+    <script>
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Send form to WhatsApp
+        function sendToWhatsApp(event) {
+            if (event) event.preventDefault();
+            
+            const nombre = document.getElementById('nombre').value.trim();
+            const telefono = document.getElementById('telefono').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const asunto = document.getElementById('asunto').value.trim();
+            const mensaje = document.getElementById('mensaje').value.trim();
+            
+            // Validate all fields
+            if (!nombre) {
+                alert('⚠️ El campo "Nombre Completo" es obligatorio.');
+                document.getElementById('nombre').focus();
+                return;
+            }
+            if (!telefono) {
+                alert('⚠️ El campo "Teléfono de Contacto" es obligatorio.');
+                document.getElementById('telefono').focus();
+                return;
+            }
+            if (!email) {
+                alert('⚠️ El campo "Correo Electrónico" es obligatorio.');
+                document.getElementById('email').focus();
+                return;
+            }
+            if (!asunto) {
+                alert('⚠️ El campo "Asunto" es obligatorio.');
+                document.getElementById('asunto').focus();
+                return;
+            }
+            if (!mensaje) {
+                alert('⚠️ El campo "Mensaje" es obligatorio.');
+                document.getElementById('mensaje').focus();
+                return;
+            }
+            
+            // Validate email format
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('⚠️ Por favor ingresa un correo electrónico válido.');
+                document.getElementById('email').focus();
+                return;
+            }
+            
+            const texto = `*Nuevo Mensaje desde Landing Page*%0A%0A` +
+                `*Nombre:* ${nombre}%0A` +
+                `*Teléfono:* ${telefono}%0A` +
+                `*Email:* ${email}%0A` +
+                `*Asunto:* ${asunto}%0A%0A` +
+                `*Mensaje:*%0A${mensaje}%0A%0A` +
+                `------------------%0A` +
+                `Hola, ponte en contacto conmigo. Saludos`;
+            
+            const url = `https://wa.me/5215613708967?text=${texto}`;
+            window.open(url, '_blank');
+            
+            // Reset form after sending
+            document.getElementById('contactForm').reset();
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-xl');
+            } else {
+                nav.classList.remove('shadow-xl');
+            }
+        });
+    </script>
+</body>
+</html>
