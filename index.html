@@ -28,50 +28,99 @@
         }
     </script>
     <style data-purpose="custom-layout">
-        .glass-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(170, 143, 118, 0.2);
-        }
-        .hero-gradient {
-            background: linear-gradient(135deg, #152046 0%, #1e2d5f 100%);
-        }
-        .timeline-dot::before {
-            content: '';
-            position: absolute;
-            left: -9px;
-            top: 5px;
-            width: 18px;
-            height: 18px;
-            background-color: #AA8F76;
-            border-radius: 50%;
-            border: 4px solid #fff;
-        }
-        @media (min-width: 768px) {
-            .timeline-dot::before {
-                left: -41px;
-            }
-        }
+        /* === BASE === */
+        .glass-card{background:rgba(255,255,255,.95);backdrop-filter:blur(10px);border:1px solid rgba(170,143,118,.2)}
+        .hero-gradient{background:linear-gradient(135deg,#152046 0%,#1e2d5f 100%)}
+        .timeline-dot::before{content:'';position:absolute;left:-9px;top:5px;width:18px;height:18px;background-color:#AA8F76;border-radius:50%;border:4px solid #fff}
+        @media(min-width:768px){.timeline-dot::before{left:-41px}}
+
+        /* === LOADER === */
+        #loader{position:fixed;inset:0;background:#0b1428;z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity .7s ease,visibility .7s ease}
+        #loader.fade-out{opacity:0;visibility:hidden;pointer-events:none}
+        .loader-logo{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,4vw,2.6rem);color:#fff;letter-spacing:.3em;margin-bottom:2rem;text-align:center}
+        .loader-logo span{color:#fff}
+        .loader-bar-wrap{width:min(300px,75vw);height:3px;background:rgba(255,255,255,.12);border-radius:99px;overflow:hidden;margin-bottom:.9rem}
+        #loader-bar{height:100%;background:linear-gradient(90deg,#AA8F76,#c9a98a);border-radius:99px;width:0%;transition:width .12s ease}
+        #loader-pct{font-family:'Inter',sans-serif;font-size:.8rem;color:rgba(150,164,211,.8);letter-spacing:.15em}
+
+        /* === CUSTOM CURSOR === */
+        *{cursor:none!important}
+        #c-dot{position:fixed;width:9px;height:9px;background:#4a4a4a;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:width .18s,height .18s}
+        body.ch #c-dot{width:13px;height:13px;background:#3a3a3a}
+
+        /* === HAMBURGER X === */
+        #hbg .ic-x{display:none}
+        #hbg.open .ic-bars{display:none}
+        #hbg.open .ic-x{display:block}
+
+        /* === NAV CONTACT BUTTON === */
+        .nav-cta{padding:5px 14px;border:1.5px solid #AA8F76;border-radius:4px;color:#AA8F76!important;transition:background .25s,color .25s}
+        .nav-cta:hover{background:#AA8F76;color:#fff!important}
+
+        /* === 3D TILT === */
+        .tilt-card{transition:transform .08s ease,box-shadow .25s ease;will-change:transform;transform-style:preserve-3d}
+        .tilt-card:hover{box-shadow:0 20px 50px rgba(21,32,70,.15)}
+
+        /* === ANIMATED BARS === */
+        .skill-fill{width:0%}
+
+        /* === VALUE CARD HOVER COLORS === */
+        .val-card{transition:background .3s,transform .25s,box-shadow .25s}
+        .val-card:hover{transform:translateY(-6px)!important;box-shadow:0 16px 40px rgba(0,0,0,.13)}
+        .vc1:hover{background:#fee2e2} .vc1:hover .vi{color:#ef4444} .vc1:hover .vt{color:#b91c1c}
+        .vc2:hover{background:#dbeafe} .vc2:hover .vi{color:#3b82f6} .vc2:hover .vt{color:#1d4ed8}
+        .vc3:hover{background:#fef9c3} .vc3:hover .vi{color:#ca8a04} .vc3:hover .vt{color:#92400e}
+        .vc4:hover{background:#ede9fe} .vc4:hover .vi{color:#7c3aed} .vc4:hover .vt{color:#5b21b6}
+        .vc5:hover{background:#d1fae5} .vc5:hover .vi{color:#059669} .vc5:hover .vt{color:#065f46}
+        .vc6:hover{background:#ffedd5} .vc6:hover .vi{color:#ea580c} .vc6:hover .vt{color:#9a3412}
+        .vi,.vt{transition:color .3s}
+
+        /* === APPLE SKILL CARDS === */
+        .skill-apple-card{background:#fff;border-radius:18px;padding:28px 24px;box-shadow:0 2px 12px rgba(0,0,0,.07),0 0 0 1px rgba(0,0,0,.04);transition:box-shadow .3s,transform .3s}
+        .skill-apple-card:hover{box-shadow:0 8px 32px rgba(0,0,0,.11),0 0 0 1px rgba(0,0,0,.05);transform:translateY(-3px)}
+        .skill-apple-header{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+        .skill-apple-icon-wrap{width:40px;height:40px;background:linear-gradient(135deg,#f0ebe5,#e8e0d8);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .skill-apple-icon{font-size:1.15rem;color:#AA8F76}
+        .skill-apple-title{font-size:1.05rem;font-weight:700;color:#152046;letter-spacing:-.01em}
+        .skill-row{margin-bottom:2px}
+        .skill-row-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;font-size:.82rem;color:#444}
+        .skill-pct{font-weight:600;color:#AA8F76;font-size:.8rem}
+        .skill-track{width:100%;background:#e8e8ed;border-radius:99px;height:5px;overflow:hidden}
+        .skill-fill{height:100%;background:linear-gradient(90deg,#AA8F76,#c9a98a);border-radius:99px;width:0%;transition:width .9s cubic-bezier(.22,1,.36,1)}
+        .skill-pill{display:inline-block;padding:5px 13px;background:#f0ebe5;color:#5a4a3a;font-size:.78rem;font-weight:500;border-radius:99px;border:1px solid rgba(170,143,118,.18);transition:background .2s,color .2s}
+        .skill-pill:hover{background:#AA8F76;color:#fff}
+        .skill-list-item{display:flex;justify-content:space-between;align-items:center;font-size:.85rem;color:#444;padding:6px 0;border-bottom:1px solid #f0f0f5}
+        .skill-list-item:last-child{border-bottom:none}
+        .skill-badge{font-size:.75rem;font-weight:600;color:#AA8F76;background:#f0ebe5;padding:3px 10px;border-radius:99px}
     </style>
 </head>
 <body class="bg-slate-50 text-navy font-sans antialiased">
+    <!-- Custom Cursor -->
+    <div id="c-dot"></div>
+    <!-- LOADER -->
+    <div id="loader">
+        <div class="loader-logo">CHRISTIAN <span>G.N.</span></div>
+        <div class="loader-bar-wrap"><div id="loader-bar"></div></div>
+        <div id="loader-pct">0%</div>
+    </div>
     <!-- BEGIN: Navigation -->
     <nav class="fixed w-full z-50 bg-navy/95 backdrop-blur-sm border-b border-gold/20 py-4 shadow-lg" data-purpose="main-navigation">
         <div class="container mx-auto px-6 flex justify-between items-center">
             <div class="text-white font-serif text-xl tracking-wider">
-                C.A.G.N<span class="text-gold">.</span>
+                C.A.G.N<span class="text-white">.</span>
             </div>
-            <div class="hidden md:flex space-x-8 text-white/90 text-sm font-medium uppercase tracking-widest">
+            <div class="hidden md:flex space-x-8 text-white/90 text-sm font-medium uppercase tracking-widest items-center">
                 <a class="hover:text-gold transition-colors" href="#hero">Inicio</a>
                 <a class="hover:text-gold transition-colors" href="#about">Perfil</a>
                 <a class="hover:text-gold transition-colors" href="#experience">Experiencia</a>
                 <a class="hover:text-gold transition-colors" href="#skills">Habilidades</a>
                 <a class="hover:text-gold transition-colors" href="#education">Formación</a>
-                <a class="hover:text-gold transition-colors" href="#contact">Contacto</a>
+                <a class="nav-cta" href="#contact">Contacto</a>
             </div>
             <!-- Mobile Menu Toggle -->
-            <button class="md:hidden text-white" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
-                <i class="fa-solid fa-bars text-xl"></i>
+            <button class="md:hidden text-white" id="hbg" onclick="toggleMenu()">
+                <i class="fa-solid fa-bars text-xl ic-bars"></i>
+                <i class="fa-solid fa-times text-xl ic-x"></i>
             </button>
         </div>
         <!-- Mobile Menu -->
@@ -82,49 +131,49 @@
                 <a class="hover:text-gold transition-colors" href="#experience">Experiencia</a>
                 <a class="hover:text-gold transition-colors" href="#skills">Habilidades</a>
                 <a class="hover:text-gold transition-colors" href="#education">Formación</a>
-                <a class="hover:text-gold transition-colors" href="#contact">Contacto</a>
+                <a class="nav-cta inline-block" href="#contact">Contacto</a>
             </div>
         </div>
     </nav>
     <!-- END: Navigation -->
 
     <!-- BEGIN: Hero Section -->
-    <section class="hero-gradient min-h-screen pt-20 pb-12 px-6 overflow-hidden relative flex items-center" data-purpose="hero-section" id="hero">
-        <div class="container mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
+    <section class="hero-gradient px-6 overflow-hidden relative flex items-center" data-purpose="hero-section" id="hero" style="min-height:100vh;min-height:100dvh;padding-top:72px;padding-bottom:56px;box-sizing:border-box;">
+        <div class="container mx-auto flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-10 w-full">
             <div class="lg:w-1/2 text-center lg:text-left z-10">
-                <div class="inline-block px-4 py-2 bg-gold/10 backdrop-blur-sm rounded-full border border-gold/30 mb-5">
-                    <h2 class="text-gold font-medium tracking-[0.25em] uppercase text-sm">Ingeniero en Gestión Empresarial</h2>
+                <div class="inline-block px-3 py-1 bg-gold/10 backdrop-blur-sm rounded-full border border-gold/30 mb-3">
+                    <h2 class="text-gold font-medium tracking-[0.15em] uppercase" style="font-size:clamp(0.6rem,1.2vw,0.72rem);">Ingeniero en Gestión Empresarial</h2>
                 </div>
-                <h1 class="text-white font-serif text-3xl md:text-4xl lg:text-5xl mb-4 leading-tight uppercase" style="letter-spacing: -0.5px;">
-                    Christian Alberto<br/><span class="text-gold text-2xl md:text-3xl lg:text-4xl">García Navarrete</span>
+                <h1 class="text-white font-serif mb-3 leading-tight uppercase" style="font-size:clamp(1.5rem,3.5vw,2.8rem);letter-spacing:-0.5px;">
+                    Christian Alberto<br/><span class="text-gold" style="font-size:clamp(1.1rem,2.8vw,2.1rem);">García Navarrete</span>
                 </h1>
                 
                 <!-- Credenciales -->
-                <div class="flex flex-wrap justify-center lg:justify-start gap-2 mb-5">
-                    <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 py-2 rounded-lg border border-white/20">
-                        <i class="fas fa-graduation-cap text-gold"></i>
-                        <span class="text-softBlue text-xs md:text-sm">Cédula: 11690553</span>
+                <div class="flex flex-wrap justify-center lg:justify-start gap-2 mb-3">
+                    <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-white/20">
+                        <i class="fas fa-graduation-cap text-gold text-xs"></i>
+                        <span class="text-softBlue text-xs">Cédula: 11690553</span>
                     </div>
-                    <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 py-2 rounded-lg border border-white/20">
-                        <i class="fas fa-university text-gold"></i>
-                        <span class="text-softBlue text-xs md:text-sm">ITIZ 2019</span>
+                    <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-white/20">
+                        <i class="fas fa-university text-gold text-xs"></i>
+                        <span class="text-softBlue text-xs">ITIZ 2019</span>
                     </div>
-                    <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 py-2 rounded-lg border border-white/20">
-                        <i class="fas fa-briefcase text-gold"></i>
-                        <span class="text-softBlue text-xs md:text-sm">+7 Años Exp.</span>
+                    <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-white/20">
+                        <i class="fas fa-briefcase text-gold text-xs"></i>
+                        <span class="text-softBlue text-xs">+7 Años Exp.</span>
                     </div>
                 </div>
 
-                <p class="text-softBlue text-sm md:text-base lg:text-lg mb-6 max-w-xl leading-relaxed">
-                    Especialista en <strong>Capital Humano</strong> y <strong>Tecnologías Administrativas</strong>. Transformo datos complejos en <strong>estrategias de alto impacto</strong> que optimizan procesos y fortalecen la toma de decisiones en entornos institucionales.
+                <p class="text-softBlue mb-4 max-w-xl leading-relaxed" style="font-size:clamp(0.68rem,1.1vw,0.82rem);">
+                    Especialista en <strong>Capital Humano</strong> y <strong>Tecnologías Administrativas</strong>. Mi enfoque se centra en potenciar el bienestar del personal y el cumplimiento de los objetivos institucionales mediante la transformación digital. Creo firmemente que la tecnología debe estar al servicio de las personas; por ello, diseño procesos digitales eficientes que facilitan un desempeño de calidad y un entorno de trabajo positivo. Mi perfil híbrido combina el análisis de datos estratégicos con un sólido dominio de las leyes laborales, asegurando que cada avance tecnológico fortalezca tanto la productividad como la cultura organizacional.
                 </p>
                 <div class="flex flex-wrap justify-center lg:justify-start gap-3">
-                    <a class="px-6 py-3 md:px-8 md:py-4 bg-gold hover:bg-[#967d65] text-white font-bold rounded-sm transition-all shadow-xl text-sm md:text-base" href="#contact">Contactar</a>
-                    <a class="px-6 py-3 md:px-8 md:py-4 border border-softBlue text-softBlue hover:bg-softBlue hover:text-navy font-bold rounded-sm transition-all text-sm md:text-base" href="#experience">Trayectoria</a>
+                    <a class="px-5 py-2.5 bg-gold hover:bg-[#967d65] text-white font-bold rounded-sm transition-all shadow-xl text-sm" href="#contact">Contactar</a>
+                    <a class="px-5 py-2.5 border border-softBlue text-softBlue hover:bg-softBlue hover:text-navy font-bold rounded-sm transition-all text-sm" href="#experience">Trayectoria</a>
                 </div>
             </div>
-            <div class="lg:w-1/2 relative">
-                <div class="w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full border-4 border-gold/40 p-2 mx-auto shadow-2xl">
+            <div class="lg:w-1/2 relative flex justify-center">
+                <div class="rounded-full border-4 border-gold/40 p-2 shadow-2xl" style="width:clamp(160px,22vw,280px);height:clamp(160px,22vw,280px);">
                     <div class="w-full h-full rounded-full overflow-hidden bg-navy shadow-2xl relative">
                         <img alt="Christian Alberto García Navarrete" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" src="Foto_CAGN.png"/>
                     </div>
@@ -135,9 +184,9 @@
             </div>
         </div>
         <!-- Scroll Indicator -->
-        <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 animate-bounce">
             <a href="#about" class="text-white/60 hover:text-gold transition-colors">
-                <i class="fas fa-chevron-down text-3xl"></i>
+                <i class="fas fa-chevron-down text-2xl"></i>
             </a>
         </div>
     </section>
@@ -152,18 +201,18 @@
                 <p class="text-gray-600 text-lg leading-relaxed mb-12">
                     Como <strong>Ingeniero en Gestión Empresarial</strong> especializado en <strong>Gestión de Capital Humano</strong>, cuento con una sólida formación en tecnologías administrativas, análisis de datos y gestión de personal. Mi experiencia en la <strong>administración pública federal</strong> abarca una amplia gama de competencias analíticas y organizativas que me permiten abordar desafíos complejos con una perspectiva estratégica y meticulosa. Me distingo por mi capacidad para <strong>integrar soluciones tecnológicas</strong> y herramientas de análisis de datos que reducen la incertidumbre y fortalecen la toma de decisiones, permitiendo definir estrategias más precisas, oportunas y alineadas a los objetivos institucionales.
                 </p>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="p-8 border border-slate-100 rounded-lg shadow-sm hover:shadow-md transition-shadow" data-purpose="value-card">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8" style="perspective:800px">
+                    <div class="tilt-card p-8 border border-slate-100 rounded-lg shadow-sm" data-purpose="value-card" style="background:rgba(59,130,246,0.04);border-color:rgba(59,130,246,0.12);">
                         <i class="fa-solid fa-users-gear text-3xl text-gold mb-4"></i>
                         <h3 class="font-bold text-navy mb-2">Capital Humano</h3>
                         <p class="text-sm text-gray-500">Gestión estratégica y desarrollo organizacional.</p>
                     </div>
-                    <div class="p-8 border border-slate-100 rounded-lg shadow-sm hover:shadow-md transition-shadow" data-purpose="value-card">
+                    <div class="tilt-card p-8 border border-slate-100 rounded-lg shadow-sm" data-purpose="value-card" style="background:rgba(59,130,246,0.04);border-color:rgba(59,130,246,0.12);">
                         <i class="fa-solid fa-chart-line text-3xl text-gold mb-4"></i>
                         <h3 class="font-bold text-navy mb-2">Data Analysis</h3>
                         <p class="text-sm text-gray-500">Inteligencia de negocios aplicada a procesos administrativos.</p>
                     </div>
-                    <div class="p-8 border border-slate-100 rounded-lg shadow-sm hover:shadow-md transition-shadow" data-purpose="value-card">
+                    <div class="tilt-card p-8 border border-slate-100 rounded-lg shadow-sm" data-purpose="value-card" style="background:rgba(59,130,246,0.04);border-color:rgba(59,130,246,0.12);">
                         <i class="fa-solid fa-database text-3xl text-gold mb-4"></i>
                         <h3 class="font-bold text-navy mb-2">Optimización</h3>
                         <p class="text-sm text-gray-500">Automatización de bases de datos y mejora continua.</p>
@@ -175,168 +224,122 @@
     <!-- END: About Me -->
 
     <!-- BEGIN: Skills Section -->
-    <section class="py-24 px-6 bg-slate-50" data-purpose="skills-grid" id="skills">
+    <section class="py-24 px-6 bg-[#f5f5f7]" data-purpose="skills-grid" id="skills">
         <div class="container mx-auto">
             <div class="text-center mb-16">
                 <span class="text-gold font-bold tracking-widest uppercase text-sm">Competencias</span>
-                <h2 class="text-4xl font-serif mt-2">Habilidades Técnicas</h2>
-                <div class="w-24 h-1 bg-gold mx-auto mt-4"></div>
+                <h2 class="font-serif mt-2" style="font-size:clamp(1.8rem,4vw,2.5rem);color:#152046;">Habilidades Técnicas</h2>
+                <div class="w-16 h-0.5 bg-gold mx-auto mt-5 rounded-full"></div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <!-- Ofimática -->
-                <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-100" data-purpose="skill-card">
-                    <div class="flex items-center gap-3 mb-6">
-                        <i class="fas fa-file-word text-3xl text-gold"></i>
-                        <h3 class="font-bold text-navy text-xl">Ofimática</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+
+                <!-- Ofimática — Apple style progress bars -->
+                <div class="skill-apple-card" data-purpose="skill-card" id="card-ofimatica">
+                    <div class="skill-apple-header">
+                        <div class="skill-apple-icon-wrap"><i class="fas fa-file-word skill-apple-icon"></i></div>
+                        <h3 class="skill-apple-title">Ofimática</h3>
                     </div>
-                    <div class="space-y-4">
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-sm text-gray-600">Microsoft Word</span>
-                                <span class="text-sm text-gold font-bold">90%</span>
-                            </div>
-                            <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
-                                <div class="bg-gold h-full rounded-full" style="width: 90%"></div>
-                            </div>
+                    <div class="space-y-4" id="ofimatica-bars">
+                        <div class="skill-row">
+                            <div class="skill-row-top"><span>Microsoft Word</span><span class="skill-pct">90%</span></div>
+                            <div class="skill-track"><div class="sbar skill-fill" data-width="90"></div></div>
                         </div>
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-sm text-gray-600">Microsoft Excel</span>
-                                <span class="text-sm text-gold font-bold">80%</span>
-                            </div>
-                            <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
-                                <div class="bg-gold h-full rounded-full" style="width: 80%"></div>
-                            </div>
+                        <div class="skill-row">
+                            <div class="skill-row-top"><span>Microsoft Excel</span><span class="skill-pct">80%</span></div>
+                            <div class="skill-track"><div class="sbar skill-fill" data-width="80"></div></div>
                         </div>
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-sm text-gray-600">MS Access</span>
-                                <span class="text-sm text-gold font-bold">60%</span>
-                            </div>
-                            <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
-                                <div class="bg-gold h-full rounded-full" style="width: 60%"></div>
-                            </div>
+                        <div class="skill-row">
+                            <div class="skill-row-top"><span>MS Access</span><span class="skill-pct">60%</span></div>
+                            <div class="skill-track"><div class="sbar skill-fill" data-width="60"></div></div>
                         </div>
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-sm text-gray-600">PowerPoint</span>
-                                <span class="text-sm text-gold font-bold">50%</span>
-                            </div>
-                            <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
-                                <div class="bg-gold h-full rounded-full" style="width: 50%"></div>
-                            </div>
+                        <div class="skill-row">
+                            <div class="skill-row-top"><span>PowerPoint</span><span class="skill-pct">50%</span></div>
+                            <div class="skill-track"><div class="sbar skill-fill" data-width="50"></div></div>
                         </div>
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-sm text-gray-600">Power BI</span>
-                                <span class="text-sm text-gold font-bold">Básico</span>
-                            </div>
-                            <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
-                                <div class="bg-gold h-full rounded-full" style="width: 30%"></div>
-                            </div>
+                        <div class="skill-row">
+                            <div class="skill-row-top"><span>Power BI</span><span class="skill-pct">Básico</span></div>
+                            <div class="skill-track"><div class="sbar skill-fill" data-width="10"></div></div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Aptitudes -->
-                <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-100" data-purpose="skill-card">
-                    <div class="flex items-center gap-3 mb-6">
-                        <i class="fas fa-brain text-3xl text-gold"></i>
-                        <h3 class="font-bold text-navy text-xl">Aptitudes</h3>
+                <div class="skill-apple-card" data-purpose="skill-card">
+                    <div class="skill-apple-header">
+                        <div class="skill-apple-icon-wrap"><i class="fas fa-brain skill-apple-icon"></i></div>
+                        <h3 class="skill-apple-title">Aptitudes</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-2 bg-navy/5 text-navy text-sm rounded-full border border-navy/10">Autodidacta</span>
-                        <span class="px-3 py-2 bg-navy/5 text-navy text-sm rounded-full border border-navy/10">Capacidad Analítica</span>
-                        <span class="px-3 py-2 bg-navy/5 text-navy text-sm rounded-full border border-navy/10">Organización</span>
-                        <span class="px-3 py-2 bg-navy/5 text-navy text-sm rounded-full border border-navy/10">Planificación</span>
-                        <span class="px-3 py-2 bg-navy/5 text-navy text-sm rounded-full border border-navy/10">Pensamiento Crítico</span>
-                        <span class="px-3 py-2 bg-navy/5 text-navy text-sm rounded-full border border-navy/10">Comunicación Efectiva</span>
-                        <span class="px-3 py-2 bg-navy/5 text-navy text-sm rounded-full border border-navy/10">Trabajo en Equipo</span>
-                        <span class="px-3 py-2 bg-navy/5 text-navy text-sm rounded-full border border-navy/10">Adaptabilidad</span>
+                        <span class="skill-pill">Autodidacta</span>
+                        <span class="skill-pill">Capacidad Analítica</span>
+                        <span class="skill-pill">Organización</span>
+                        <span class="skill-pill">Planificación</span>
+                        <span class="skill-pill">Pensamiento Crítico</span>
+                        <span class="skill-pill">Comunicación Efectiva</span>
+                        <span class="skill-pill">Trabajo en Equipo</span>
+                        <span class="skill-pill">Adaptabilidad</span>
                     </div>
                 </div>
 
                 <!-- Diseño Digital -->
-                <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-100" data-purpose="skill-card">
-                    <div class="flex items-center gap-3 mb-6">
-                        <i class="fas fa-palette text-3xl text-gold"></i>
-                        <h3 class="font-bold text-navy text-xl">Diseño Digital</h3>
+                <div class="skill-apple-card" data-purpose="skill-card">
+                    <div class="skill-apple-header">
+                        <div class="skill-apple-icon-wrap"><i class="fas fa-palette skill-apple-icon"></i></div>
+                        <h3 class="skill-apple-title">Diseño Digital</h3>
                     </div>
                     <ul class="space-y-3">
-                        <li class="flex justify-between items-center">
-                            <span class="text-sm text-gray-600">Edición de Imágenes</span>
-                            <span class="text-sm text-gold font-bold">Básico</span>
-                        </li>
-                        <li class="flex justify-between items-center">
-                            <span class="text-sm text-gray-600">Edición de Video</span>
-                            <span class="text-sm text-gold font-bold">Básico</span>
-                        </li>
-                        <li class="flex justify-between items-center">
-                            <span class="text-sm text-gray-600">Uso de IA</span>
-                            <span class="text-sm text-gold font-bold">Básico</span>
-                        </li>
-                        <li class="flex justify-between items-center">
-                            <span class="text-sm text-gray-600">Creación de páginas WEB con IA</span>
-                            <span class="text-sm text-gold font-bold">Básico</span>
-                        </li>
+                        <li class="skill-list-item"><span>Edición de Imágenes</span><span class="skill-badge">Básico</span></li>
+                        <li class="skill-list-item"><span>Edición de Video</span><span class="skill-badge">Básico</span></li>
+                        <li class="skill-list-item"><span>Uso de Herramientas IA</span><span class="skill-badge">Básico</span></li>
+                        <li class="skill-list-item"><span>Diseño de Páginas WEB asistido con IA</span><span class="skill-badge">Básico</span></li>
                     </ul>
                 </div>
 
                 <!-- Soporte Técnico -->
-                <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-100" data-purpose="skill-card">
-                    <div class="flex items-center gap-3 mb-6">
-                        <i class="fas fa-tools text-3xl text-gold"></i>
-                        <h3 class="font-bold text-navy text-xl">Soporte Técnico</h3>
+                <div class="skill-apple-card" data-purpose="skill-card">
+                    <div class="skill-apple-header">
+                        <div class="skill-apple-icon-wrap"><i class="fas fa-tools skill-apple-icon"></i></div>
+                        <h3 class="skill-apple-title">Soporte Técnico</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-2 bg-navy/5 text-navy text-sm rounded-full border border-navy/10">Formateo</span>
-                        <span class="px-3 py-2 bg-navy/5 text-navy text-sm rounded-full border border-navy/10">Actualización</span>
-                        <span class="px-3 py-2 bg-navy/5 text-navy text-sm rounded-full border border-navy/10">Instalación</span>
+                        <span class="skill-pill">Formateo</span>
+                        <span class="skill-pill">Actualización</span>
+                        <span class="skill-pill">Instalación de Sistema Operativo</span>
                     </div>
                 </div>
 
-                <!-- Idiomas -->
-                <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-100" data-purpose="skill-card">
-                    <div class="flex items-center gap-3 mb-6">
-                        <i class="fas fa-language text-3xl text-gold"></i>
-                        <h3 class="font-bold text-navy text-xl">Idiomas</h3>
+                <!-- Idiomas — Apple style progress bars -->
+                <div class="skill-apple-card" data-purpose="skill-card" id="card-idiomas">
+                    <div class="skill-apple-header">
+                        <div class="skill-apple-icon-wrap"><i class="fas fa-language skill-apple-icon"></i></div>
+                        <h3 class="skill-apple-title">Idiomas</h3>
                     </div>
-                    <div class="space-y-4">
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-sm text-gray-600">Español</span>
-                                <span class="text-sm text-gold font-bold">Nativo</span>
-                            </div>
-                            <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
-                                <div class="bg-gold h-full rounded-full" style="width: 100%"></div>
-                            </div>
+                    <div class="space-y-4" id="idiomas-bars">
+                        <div class="skill-row">
+                            <div class="skill-row-top"><span>Español</span><span class="skill-pct">Nativo</span></div>
+                            <div class="skill-track"><div class="sbar skill-fill" data-width="100"></div></div>
                         </div>
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-sm text-gray-600">Inglés</span>
-                                <span class="text-sm text-gold font-bold">Básico</span>
-                            </div>
-                            <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
-                                <div class="bg-gold h-full rounded-full" style="width: 10%"></div>
-                            </div>
+                        <div class="skill-row">
+                            <div class="skill-row-top"><span>Inglés</span><span class="skill-pct">Básico</span></div>
+                            <div class="skill-track"><div class="sbar skill-fill" data-width="10"></div></div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Cursos -->
-                <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-100" data-purpose="skill-card">
-                    <div class="flex items-center gap-3 mb-6">
-                        <i class="fas fa-certificate text-3xl text-gold"></i>
-                        <h3 class="font-bold text-navy text-xl">Cursos</h3>
+                <div class="skill-apple-card" data-purpose="skill-card">
+                    <div class="skill-apple-header">
+                        <div class="skill-apple-icon-wrap"><i class="fas fa-certificate skill-apple-icon"></i></div>
+                        <h3 class="skill-apple-title">Cursos</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-2 bg-navy/5 text-navy text-sm rounded-full border border-navy/10">NOM-035-STPS</span>
-                        <span class="px-3 py-2 bg-navy/5 text-navy text-sm rounded-full border border-navy/10">Igualdad Laboral y No Discriminación</span>
-                        <span class="px-3 py-2 bg-navy/5 text-navy text-sm rounded-full border border-navy/10">Office 365</span>
-                        <span class="px-3 py-2 bg-navy/5 text-navy text-sm rounded-full border border-navy/10">Office 2024</span>
+                        <span class="skill-pill">NOM-035-STPS</span>
+                        <span class="skill-pill">Igualdad Laboral y No Discriminación</span>
+                        <span class="skill-pill">Office 365</span>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -458,30 +461,30 @@
             </div>
 
             <div class="max-w-3xl mx-auto">
-                <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 md:p-12 text-center">
-                    <i class="fas fa-graduation-cap text-5xl text-gold mb-6"></i>
-                    <h3 class="text-2xl md:text-3xl font-serif font-bold mb-4">Licenciatura en Ingeniería en Gestión Empresarial</h3>
-                    <p class="text-softBlue text-lg mb-8">Instituto Tecnológico de Iztapalapa</p>
-                    <div class="flex flex-wrap justify-center gap-6">
-                        <div class="flex items-center gap-3 bg-white/10 px-6 py-3 rounded-lg">
-                            <i class="fas fa-calendar-check text-gold"></i>
+                <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-10 text-center" style="display:flex;flex-direction:column;align-items:center;gap:0;">
+                    <img src="Recursos/ITIZ.png" alt="TecNM Campus Iztapalapa" class="w-auto mx-auto mb-5 object-contain" style="height:clamp(48px,8vw,80px);filter:brightness(0) invert(1);opacity:1;"/>
+                    <h3 class="font-serif font-bold mb-3" style="font-size:clamp(1.1rem,2.5vw,1.75rem);">Licenciatura en Ingeniería en Gestión Empresarial</h3>
+                    <p class="text-softBlue mb-6" style="font-size:clamp(0.85rem,1.5vw,1.05rem);">TecNM | Tecnológico Nacional de México Campus Iztapalapa</p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <div class="flex items-center gap-3 bg-white/10 px-4 py-2.5 rounded-lg">
+                            <i class="fas fa-calendar-check text-gold text-sm"></i>
                             <div class="text-left">
                                 <p class="text-xs text-white/60 uppercase">Titulación</p>
-                                <p class="font-semibold">25 Jun 2019</p>
+                                <p class="font-semibold text-sm">25 Jun 2019</p>
                             </div>
                         </div>
-                        <div class="flex items-center gap-3 bg-white/10 px-6 py-3 rounded-lg">
-                            <i class="fas fa-id-card text-gold"></i>
+                        <div class="flex items-center gap-3 bg-white/10 px-4 py-2.5 rounded-lg">
+                            <i class="fas fa-id-card text-gold text-sm"></i>
                             <div class="text-left">
                                 <p class="text-xs text-white/60 uppercase">Cédula Profesional</p>
-                                <p class="font-semibold">11690553</p>
+                                <p class="font-semibold text-sm">11690553</p>
                             </div>
                         </div>
-                        <div class="flex items-center gap-3 bg-white/10 px-6 py-3 rounded-lg">
-                            <i class="fas fa-certificate text-gold"></i>
+                        <div class="flex items-center gap-3 bg-white/10 px-4 py-2.5 rounded-lg">
+                            <i class="fas fa-certificate text-gold text-sm"></i>
                             <div class="text-left">
                                 <p class="text-xs text-white/60 uppercase">Expedición</p>
-                                <p class="font-semibold">29 Ago 2019</p>
+                                <p class="font-semibold text-sm">29 Ago 2019</p>
                             </div>
                         </div>
                     </div>
@@ -501,29 +504,29 @@
             </div>
 
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 max-w-5xl mx-auto">
-                <div class="bg-slate-50 p-6 rounded-xl text-center hover:shadow-lg transition-all hover:-translate-y-1 border border-slate-100">
-                    <i class="fas fa-heart text-3xl text-gold mb-3"></i>
-                    <h3 class="font-bold text-navy">Abnegación</h3>
+                <div class="val-card vc1 bg-slate-50 p-6 rounded-xl text-center border border-slate-100">
+                    <i class="vi fas fa-heart text-3xl text-gold mb-3"></i>
+                    <h3 class="vt font-bold text-navy">Abnegación</h3>
                 </div>
-                <div class="bg-slate-50 p-6 rounded-xl text-center hover:shadow-lg transition-all hover:-translate-y-1 border border-slate-100">
-                    <i class="fas fa-shield-alt text-3xl text-gold mb-3"></i>
-                    <h3 class="font-bold text-navy">Lealtad</h3>
+                <div class="val-card vc2 bg-slate-50 p-6 rounded-xl text-center border border-slate-100">
+                    <i class="vi fas fa-shield-alt text-3xl text-gold mb-3"></i>
+                    <h3 class="vt font-bold text-navy">Lealtad</h3>
                 </div>
-                <div class="bg-slate-50 p-6 rounded-xl text-center hover:shadow-lg transition-all hover:-translate-y-1 border border-slate-100">
-                    <i class="fas fa-hand-holding-usd text-3xl text-gold mb-3"></i>
-                    <h3 class="font-bold text-navy">Honradez</h3>
+                <div class="val-card vc3 bg-slate-50 p-6 rounded-xl text-center border border-slate-100">
+                    <i class="vi fas fa-hand-holding-usd text-3xl text-gold mb-3"></i>
+                    <h3 class="vt font-bold text-navy">Honradez</h3>
                 </div>
-                <div class="bg-slate-50 p-6 rounded-xl text-center hover:shadow-lg transition-all hover:-translate-y-1 border border-slate-100">
-                    <i class="fas fa-balance-scale text-3xl text-gold mb-3"></i>
-                    <h3 class="font-bold text-navy">Integridad</h3>
+                <div class="val-card vc4 bg-slate-50 p-6 rounded-xl text-center border border-slate-100">
+                    <i class="vi fas fa-balance-scale text-3xl text-gold mb-3"></i>
+                    <h3 class="vt font-bold text-navy">Integridad</h3>
                 </div>
-                <div class="bg-slate-50 p-6 rounded-xl text-center hover:shadow-lg transition-all hover:-translate-y-1 border border-slate-100">
-                    <i class="fas fa-hands-helping text-3xl text-gold mb-3"></i>
-                    <h3 class="font-bold text-navy">Empatía</h3>
+                <div class="val-card vc5 bg-slate-50 p-6 rounded-xl text-center border border-slate-100">
+                    <i class="vi fas fa-hands-helping text-3xl text-gold mb-3"></i>
+                    <h3 class="vt font-bold text-navy">Empatía</h3>
                 </div>
-                <div class="bg-slate-50 p-6 rounded-xl text-center hover:shadow-lg transition-all hover:-translate-y-1 border border-slate-100">
-                    <i class="fas fa-lightbulb text-3xl text-gold mb-3"></i>
-                    <h3 class="font-bold text-navy">Innovación</h3>
+                <div class="val-card vc6 bg-slate-50 p-6 rounded-xl text-center border border-slate-100">
+                    <i class="vi fas fa-lightbulb text-3xl text-gold mb-3"></i>
+                    <h3 class="vt font-bold text-navy">Innovación</h3>
                 </div>
             </div>
         </div>
@@ -648,7 +651,7 @@
                 </div>
                 <div class="border-t border-white/10 pt-8 text-center">
                     <p class="text-white/40 text-xs uppercase tracking-widest">
-                        © 2025 Christian Alberto García Navarrete | Cédula Profesional 11690553 | Todos los derechos reservados.
+                        © 2026 Christian Alberto García Navarrete | "Hecho con ♥ en CDMX" | Todos los derechos reservados.
                     </p>
                 </div>
             </div>
@@ -658,89 +661,130 @@
 
     <!-- Scripts -->
     <script>
-        // Smooth scroll for navigation
+        /* ===== LOADER ===== */
+        (function(){
+            const bar = document.getElementById('loader-bar');
+            const pct = document.getElementById('loader-pct');
+            const loader = document.getElementById('loader');
+            let p = 0;
+            function step(){
+                const inc = Math.random()*18+3;
+                p = Math.min(100, p+inc);
+                bar.style.width = p+'%';
+                pct.textContent = Math.floor(p)+'%';
+                if(p < 100){ setTimeout(step, 120+Math.random()*180); }
+                else{ setTimeout(()=>{ loader.classList.add('fade-out'); document.body.style.overflow=''; }, 400); }
+            }
+            document.body.style.overflow='hidden';
+            setTimeout(step, 300);
+        })();
+
+        /* ===== CUSTOM CURSOR ===== */
+        (function(){
+            const dot = document.getElementById('c-dot');
+            document.addEventListener('mousemove',e=>{ dot.style.left=e.clientX+'px'; dot.style.top=e.clientY+'px'; });
+            document.querySelectorAll('a,button,input,textarea,[data-purpose]').forEach(el=>{
+                el.addEventListener('mouseenter',()=>document.body.classList.add('ch'));
+                el.addEventListener('mouseleave',()=>document.body.classList.remove('ch'));
+            });
+        })();
+
+        /* ===== HAMBURGER X TOGGLE ===== */
+        function toggleMenu(){
+            const menu = document.getElementById('mobile-menu');
+            const btn = document.getElementById('hbg');
+            menu.classList.toggle('hidden');
+            btn.classList.toggle('open');
+        }
+
+        /* ===== SMOOTH SCROLL ===== */
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e){
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+                const t = document.querySelector(this.getAttribute('href'));
+                if(t){ t.scrollIntoView({behavior:'smooth',block:'start'}); }
+                // close mobile menu if open
+                const menu=document.getElementById('mobile-menu');
+                if(!menu.classList.contains('hidden')){ toggleMenu(); }
+                // trigger skill bars if navigating to #skills
+                if(this.getAttribute('href')==='#skills'){ setTimeout(animateAllBars, 400); }
             });
         });
 
-        // Send form to WhatsApp
-        function sendToWhatsApp(event) {
-            if (event) event.preventDefault();
-            
-            const nombre = document.getElementById('nombre').value.trim();
-            const telefono = document.getElementById('telefono').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const asunto = document.getElementById('asunto').value.trim();
-            const mensaje = document.getElementById('mensaje').value.trim();
-            
-            // Validate all fields
-            if (!nombre) {
-                alert('⚠️ El campo "Nombre Completo" es obligatorio.');
-                document.getElementById('nombre').focus();
-                return;
-            }
-            if (!telefono) {
-                alert('⚠️ El campo "Teléfono de Contacto" es obligatorio.');
-                document.getElementById('telefono').focus();
-                return;
-            }
-            if (!email) {
-                alert('⚠️ El campo "Correo Electrónico" es obligatorio.');
-                document.getElementById('email').focus();
-                return;
-            }
-            if (!asunto) {
-                alert('⚠️ El campo "Asunto" es obligatorio.');
-                document.getElementById('asunto').focus();
-                return;
-            }
-            if (!mensaje) {
-                alert('⚠️ El campo "Mensaje" es obligatorio.');
-                document.getElementById('mensaje').focus();
-                return;
-            }
-            
-            // Validate email format
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                alert('⚠️ Por favor ingresa un correo electrónico válido.');
-                document.getElementById('email').focus();
-                return;
-            }
-            
-            const texto = `*Nuevo Mensaje desde Landing Page*%0A%0A` +
-                `*Nombre:* ${nombre}%0A` +
-                `*Teléfono:* ${telefono}%0A` +
-                `*Email:* ${email}%0A` +
-                `*Asunto:* ${asunto}%0A%0A` +
-                `*Mensaje:*%0A${mensaje}%0A%0A` +
-                `------------------%0A` +
-                `Hola, ponte en contacto conmigo. Saludos`;
-            
-            const url = `https://wa.me/5215613708967?text=${texto}`;
-            window.open(url, '_blank');
-            
-            // Reset form after sending
+        /* ===== ANIMATED SKILL BARS ===== */
+        function animateCardBars(card){
+            const bars = card.querySelectorAll('.skill-fill');
+            bars.forEach(b=>{ b.style.width='0%'; b.style.transition='none'; });
+            bars.forEach((b,i)=>{
+                setTimeout(()=>{
+                    b.style.transition='width .9s cubic-bezier(.22,1,.36,1)';
+                    b.style.width=(b.dataset.width||0)+'%';
+                }, 80 + i*200);
+            });
+        }
+        function makeCardObserver(cardId){
+            const card = document.getElementById(cardId);
+            if(!card) return;
+            let triggered = false;
+            const obs = new IntersectionObserver(entries=>{
+                if(entries[0].isIntersecting && !triggered){
+                    triggered = true;
+                    animateCardBars(card);
+                } else if(!entries[0].isIntersecting){
+                    triggered = false;
+                }
+            },{threshold:0.3});
+            obs.observe(card);
+        }
+        makeCardObserver('card-ofimatica');
+        makeCardObserver('card-idiomas');
+        // Nav click: animate all skill-fill bars at once
+        function animateAllBars(){
+            const allBars = document.querySelectorAll('.skill-fill');
+            allBars.forEach(b=>{ b.style.width='0%'; b.style.transition='none'; });
+            allBars.forEach((b,i)=>{
+                setTimeout(()=>{
+                    b.style.transition='width .9s cubic-bezier(.22,1,.36,1)';
+                    b.style.width=(b.dataset.width||0)+'%';
+                }, 80 + i*200);
+            });
+        }
+
+        /* ===== 3D TILT CARDS ===== */
+        document.querySelectorAll('.tilt-card').forEach(card=>{
+            card.addEventListener('mousemove',e=>{
+                const r = card.getBoundingClientRect();
+                const x = e.clientX - r.left - r.width/2;
+                const y = e.clientY - r.top - r.height/2;
+                const rx2 = (y/r.height)*-6;
+                const ry2 = (x/r.width)*6;
+                card.style.transform = `perspective(800px) rotateX(${rx2}deg) rotateY(${ry2}deg)`;
+            });
+            card.addEventListener('mouseleave',()=>{
+                card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg)';
+            });
+        });
+
+        /* ===== WHATSAPP FORM ===== */
+        function sendToWhatsApp(event){
+            if(event) event.preventDefault();
+            const n=id=>document.getElementById(id).value.trim();
+            const nombre=n('nombre'),telefono=n('telefono'),email=n('email'),asunto=n('asunto'),mensaje=n('mensaje');
+            if(!nombre){alert('⚠️ El campo "Nombre Completo" es obligatorio.');document.getElementById('nombre').focus();return;}
+            if(!telefono){alert('⚠️ El campo "Teléfono de Contacto" es obligatorio.');document.getElementById('telefono').focus();return;}
+            if(!email){alert('⚠️ El campo "Correo Electrónico" es obligatorio.');document.getElementById('email').focus();return;}
+            if(!asunto){alert('⚠️ El campo "Asunto" es obligatorio.');document.getElementById('asunto').focus();return;}
+            if(!mensaje){alert('⚠️ El campo "Mensaje" es obligatorio.');document.getElementById('mensaje').focus();return;}
+            if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){alert('⚠️ Por favor ingresa un correo electrónico válido.');document.getElementById('email').focus();return;}
+            const texto=`*Nuevo Mensaje desde Landing Page*%0A%0A*Nombre:* ${nombre}%0A*Teléfono:* ${telefono}%0A*Email:* ${email}%0A*Asunto:* ${asunto}%0A%0A*Mensaje:*%0A${mensaje}%0A%0A------------------%0AHola, ponte en contacto conmigo. Saludos`;
+            window.open(`https://wa.me/5215613708967?text=${texto}`,'_blank');
             document.getElementById('contactForm').reset();
         }
 
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 50) {
-                nav.classList.add('shadow-xl');
-            } else {
-                nav.classList.remove('shadow-xl');
-            }
+        /* ===== NAVBAR SCROLL EFFECT ===== */
+        window.addEventListener('scroll',function(){
+            const nav=document.querySelector('nav');
+            nav.classList.toggle('shadow-xl',window.scrollY>50);
         });
     </script>
 </body>
